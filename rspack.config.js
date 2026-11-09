@@ -1,2 +1,27 @@
-const { HtmlRspackPlugin } = require('@rspack/core');
-module.exports = { experiments: { css: true }, entry: './src/index.jsx', output: { clean: true }, resolve: { extensions: ['.jsx', '.js'] }, module: { rules: [{ test: /\.jsx?$/, exclude: /node_modules/, use: { loader: 'builtin:swc-loader', options: { jsc: { parser: { syntax: 'ecmascript', jsx: true }, transform: { react: { runtime: 'automatic' } } } } } }, { test: /\.css$/, type: 'css' }] }, plugins: [new HtmlRspackPlugin({ template: './src/index.html' })], devServer: { port: 3000 } };
+const { HtmlRspackPlugin } = require("@rspack/core");
+module.exports = {
+  experiments: { css: true },
+  entry: "./src/index.jsx",
+  output: { clean: true },
+  resolve: { extensions: [".jsx", ".js"] },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "builtin:swc-loader",
+          options: {
+            jsc: {
+              parser: { syntax: "ecmascript", jsx: true },
+              transform: { react: { runtime: "automatic" } },
+            },
+          },
+        },
+      },
+      { test: /\.css$/, type: "css" },
+    ],
+  },
+  plugins: [new HtmlRspackPlugin({ template: "./src/index.html" })],
+  devServer: { port: 3000 },
+};
